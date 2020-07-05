@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl1">
+        <af:button actionListener="#{bindings.Commit.execute}" text="Commit" 
+                   id="b1"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                   disabled="#{!bindings.CreateInsert.enabled}" id="b2"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:table value="#{bindings.RequestVO1.collectionModel}" var="row" rows="#{bindings.RequestVO1.rangeSize}"
+                emptyText="#{bindings.RequestVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" fetchSize="#{bindings.RequestVO1.rangeSize}"
+                filterModel="#{bindings.RequestVO1Query.queryDescriptor}" filterVisible="true"
+                queryListener="#{bindings.RequestVO1Query.processQuery}" varStatus="vs" id="t1" partialTriggers="::b2">
+        <af:column sortProperty="#{bindings.RequestVO1.hints.RequestId.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.RequestVO1.hints.RequestId.label}" id="c1">
+          <af:inputText value="#{row.bindings.RequestId.inputValue}"
+                        label="#{bindings.RequestVO1.hints.RequestId.label}"
+                        required="#{bindings.RequestVO1.hints.RequestId.mandatory}"
+                        columns="#{bindings.RequestVO1.hints.RequestId.displayWidth}"
+                        maximumLength="#{bindings.RequestVO1.hints.RequestId.precision}"
+                        shortDesc="#{bindings.RequestVO1.hints.RequestId.tooltip}" id="it1">
+            <f:validator binding="#{row.bindings.RequestId.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.RequestVO1.hints.RequestDesc.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.RequestVO1.hints.RequestDesc.label}" id="c2">
+          <af:inputText value="#{row.bindings.RequestDesc.inputValue}"
+                        label="#{bindings.RequestVO1.hints.RequestDesc.label}"
+                        required="#{bindings.RequestVO1.hints.RequestDesc.mandatory}"
+                        columns="#{bindings.RequestVO1.hints.RequestDesc.displayWidth}"
+                        maximumLength="#{bindings.RequestVO1.hints.RequestDesc.precision}"
+                        shortDesc="#{bindings.RequestVO1.hints.RequestDesc.tooltip}" id="it2">
+            <f:validator binding="#{row.bindings.RequestDesc.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.RequestVO1.hints.RequestLoc.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.RequestVO1.hints.RequestLoc.label}" id="c3">
+          <af:selectOneChoice value="#{row.bindings.RequestLoc.inputValue}" label="#{row.bindings.RequestLoc.label}"
+                              required="#{bindings.RequestVO1.hints.RequestLoc.mandatory}"
+                              shortDesc="#{bindings.RequestVO1.hints.RequestLoc.tooltip}" id="soc1">
+            <f:selectItems value="#{row.bindings.RequestLoc.items}" id="si1"/>
+            <f:validator binding="#{row.bindings.RequestLoc.validator}"/>
+          </af:selectOneChoice>
+        </af:column>
+        <af:column sortProperty="#{bindings.RequestVO1.hints.RequestCode.name}" filterable="true" sortable="true"
+                   headerText="#{bindings.RequestVO1.hints.RequestCode.label}" id="c4">
+          <af:inputText value="#{row.bindings.RequestCode.inputValue}"
+                        label="#{bindings.RequestVO1.hints.RequestCode.label}"
+                        required="#{bindings.RequestVO1.hints.RequestCode.mandatory}"
+                        columns="#{bindings.RequestVO1.hints.RequestCode.displayWidth}"
+                        maximumLength="#{bindings.RequestVO1.hints.RequestCode.precision}"
+                        shortDesc="#{bindings.RequestVO1.hints.RequestCode.tooltip}" id="it3">
+            <f:validator binding="#{row.bindings.RequestCode.validator}"/>
+          </af:inputText>
+        </af:column>
+      </af:table>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

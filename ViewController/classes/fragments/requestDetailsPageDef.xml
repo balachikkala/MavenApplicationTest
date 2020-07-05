@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="requestDetailsPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RequestVO1" RangeSize="25" DataControl="RequestModuleDataControl" id="RequestVO1Iterator"/>
+    <searchRegion Binds="RequestVO1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RequestVO1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RequestVO1Iterator" id="RequestVO1">
+      <nodeDefinition DefName="test.gov.model.RequestVO" Name="RequestVO10">
+        <AttrNames>
+          <Item Value="RequestId"/>
+          <Item Value="RequestDesc"/>
+          <Item Value="RequestLoc"/>
+          <Item Value="RequestCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="RequestModuleDataControl"/>
+    <action IterBinding="RequestVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

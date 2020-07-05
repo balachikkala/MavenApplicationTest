@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RequestModule"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="test.gov.model.RequestModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="RequestVO1"
+    ViewObjectName="test.gov.model.RequestVO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="test.gov.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

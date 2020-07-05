@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="test.gov.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/WEB-INF/flow/request-flow.xml#request-flow@CreateInsert"
+          usageId="test_gov_view_request_flow_request_flow_CreateInsertPageDef"/>
+    <page path="/fragments/requestDetails.jsff" usageId="test_gov_view_requestDetailsPageDef"/>
+    <page path="/pages/Request.jsf" usageId="test_gov_view_RequestPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="test_gov_view_request_flow_request_flow_CreateInsertPageDef"
+          path="flow.request_flow_request_flow_CreateInsertPageDef"/>
+    <page id="test_gov_view_requestDetailsPageDef" path="fragments.requestDetailsPageDef"/>
+    <page id="test_gov_view_RequestPageDef" path="pages.RequestPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="RequestModuleDataControl" Package="test.gov.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="RequestModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>
